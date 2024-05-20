@@ -7,7 +7,7 @@ IMAGE := AOS.IMG
 
 $(IMAGE): always_image $(BOOTL1)
 	dd if=/dev/zero of=$(IMAGE) bs=$$((1024*1024)) count=16 status=none
-	mkfs.fat -F 16 $(IMAGE) > /dev/null
+	mkfs.fat -F 16 -R 2 $(IMAGE) > /dev/null
 	dd if=$(BOOTL1) of=$(IMAGE) conv=notrunc status=none
 
 always_image: always
